@@ -8,7 +8,7 @@ def split_csv(file_path, rows_per_file):
     - file_path: the path to the original CSV file.
     - rows_per_file: maximum number of rows per smaller CSV file.
     """
-    with open(file_path, 'r', newline='') as csv_file:
+    with open(file_path, 'r', newline='', encoding='utf-8') as csv_file:
         reader = csv.reader(csv_file)
         header = next(reader)  # Assuming the first row is the header
         
@@ -20,7 +20,7 @@ def split_csv(file_path, rows_per_file):
             if i % rows_per_file == 0:
                 # Write the current rows to a new smaller file
                 output_file = f'{file_path[:-4]}_part{file_count}.csv'
-                with open(output_file, 'w', newline='') as output_csv:
+                with open(output_file, 'w', newline='', encoding='utf-8') as output_csv:
                     writer = csv.writer(output_csv)
                     writer.writerow(header)
                     writer.writerows(rows)
@@ -31,12 +31,13 @@ def split_csv(file_path, rows_per_file):
         # Write any remaining rows to the last file
         if rows:
             output_file = f'{file_path[:-4]}_part{file_count}.csv'
-            with open(output_file, 'w', newline='') as output_csv:
+            with open(output_file, 'w', newline='', encoding='utf-8') as output_csv:
                 writer = csv.writer(output_csv)
                 writer.writerow(header)
                 writer.writerows(rows)
 
     print(f"CSV has been split into {file_count} files.")
 
+
 # Example usage:
-split_csv('large_file.csv', 1000)  # Splits the file into smaller files with 1000 rows each
+split_csv('./CSV_utils/soldiers_mikun_details.csv', 400000)  # Splits the file into smaller files with 400000 rows each
