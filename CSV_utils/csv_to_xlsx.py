@@ -14,4 +14,4 @@ def csv_to_xlsx(csv_file_path, xlsx_file_path):
     
     print(f"File has been converted from {csv_file_path} to {xlsx_file_path}")
 
-csv_to_xlsx('./CSV_utils/soldiers_mikun_details_part3.csv', 'soldiers_mikun_details_part3.xlsx')
+csv_to_xlsx('./CSV_utils/unit.to.shavtzak.structures.csv', 'units active in kodkod.xlsx')
